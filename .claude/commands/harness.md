@@ -25,7 +25,6 @@
 5. **AC는 실행 가능한 커맨드** — "~가 동작해야 한다" 같은 추상적 서술이 아닌 `npm run build && npm test` 같은 실제 실행 가능한 검증 커맨드를 포함한다.
 6. **주의사항은 구체적으로** — "조심해라" 대신 "X를 하지 마라. 이유: Y" 형식으로 적는다.
 7. **네이밍** — step name은 kebab-case slug로, 해당 step의 핵심 모듈/작업을 한두 단어로 표현한다 (예: `project-setup`, `api-layer`, `auth-flow`).
-8. **step 0은 검증 인프라부터 세운다** — 첫 step(`project-setup`)의 AC에 테스트 러너 설치와 `package.json`의 `lint`/`build`/`test` 스크립트 등록을 반드시 포함한다. 이유: `create-next-app`과 `create-vite`는 `test` 스크립트를 만들어 주지 않는데, Stop 훅의 lint·build·test 게이트가 `npm run test` 부재 시 `Missing script: "test"`로 매 턴 실패한다.
 
 ### D. 파일 생성
 

@@ -75,4 +75,4 @@ Codex를 쓰지 않으면 `.codex/hooks.json`은 그냥 비활성 파일로 남�
 
 ## 주의
 
-**step 0에서 테스트 러너를 반드시 설치할 것.** `create-next-app`과 `create-vite` 둘 다 `test` 스크립트를 만들어 주지 않는다. 없는 채로 두면 verify-gate가 매 턴 `Missing script: "test"`로 실패한다. `/harness`의 step 설계 원칙 8번에 명시돼 있다.
+**step 0에서 테스트 러너를 반드시 설치할 것.** `create-next-app`과 `create-vite` 둘 다 `test` 스크립트를 만들어 주지 않는다. 없는 채로 두면 verify-gate가 매 턴 `Missing script: "test"`로 실패한다. step 0(`project-setup`)의 AC에 테스트 러너 설치와 `lint`/`build`/`test` 스크립트 등록을 넣어 두면 예방된다.
