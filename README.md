@@ -28,10 +28,18 @@ cp .env.example .env.local   # 값을 채운다. .env.local 은 커밋되지 않
 # 3. Claude 세션에서 step 설계
 /harness
 
-# 4. 실행
+# 4. 실행 — Claude 세션에서 "{task-name} 실행해줘" 라고 하면 대신 돌려준다.
+#    직접 돌리려면:
 python3 scripts/execute.py {task-name}          # 순차 실행
 python3 scripts/execute.py {task-name} --push   # 실행 후 push
 ```
+
+**실행 단계는 사람이 지켜볼 필요가 없다.** `execute.py`는 step마다 `claude -p`를 헤드리스로 띄우고(step당 30분 타임아웃) 결과를 `step{N}-output.json`에 남긴다. 중간에 입력을 요구하는 지점이 없으므로, Claude 세션에 실행을 맡기면 백그라운드로 돌리고 완료 시 보고한다.
+
+사람이 개입해야 하는 경우는 두 가지뿐이다:
+
+- **`error`** — 3회 재시도 후에도 실패. `index.json`에서 해당 step을 `pending`으로 되돌리고 재실행.
+- **`blocked`** — API 키·외부 인증 등 사람만 할 수 있는 일. 사유를 해결한 뒤 `pending`으로 되돌리고 재실행.
 
 ## 구성
 
