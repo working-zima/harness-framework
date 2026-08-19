@@ -1,8 +1,17 @@
 node_modules/
 .next/
 out/
+dist/
 next-env.d.ts
 tsconfig.tsbuildinfo
+
+# secrets — .env.example 만 커밋한다
+.env
+.env.*
+!.env.example
+
+# 개인 설정 (팀 공유 대상 아님)
+.claude/settings.local.json
 
 # phase execution outputs
 phases/**/phase*-output.json
